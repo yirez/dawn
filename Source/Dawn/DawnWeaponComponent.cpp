@@ -1,34 +1,32 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "DawnWeaponComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "GameFramework/Actor.h"
 
-// Sets default values for this component's properties
 UDawnWeaponComponent::UDawnWeaponComponent()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
-
-	// ...
+    PrimaryComponentTick.bCanEverTick = true;
 }
 
-
-// Called when the game starts
-void UDawnWeaponComponent::BeginPlay()
+void UDawnWeaponComponent::Fire()
 {
-	Super::BeginPlay();
+    UE_LOG(LogTemp, Warning, TEXT("Weapon Fired!"));
 
-	// ...
-	
+    FVector Location = GetComponentLocation();
+    FRotator Rotation = GetComponentRotation();
+    FHitResult Hit;
+    FVector End = Location + Rotation.Vector() * 10000;
+
+    FCollisionQueryParams Params;
+    Params.AddIgnoredActor(GetOwner());
+
+    if (GetWorld()->LineTraceSingleByChannel(Hit, Location, End, ECC_Visibility, Params))
+    {
+        if (Hit.GetActor())
+        {
+            Hit.GetActor()->Destroy();
+        }
+    }
+
+    UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), nullptr, Location);  // Replace nullptr with an actual particle reference
+    UGameplayStatics::PlaySoundAtLocation(this, nullptr, Location);           // Replace nullptr with an actual sound
 }
-
-
-// Called every frame
-void UDawnWeaponComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
-}
-

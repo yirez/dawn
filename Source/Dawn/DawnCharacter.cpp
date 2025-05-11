@@ -1,34 +1,29 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "DawnCharacter.h"
+#include "Camera/CameraComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
-// Sets default values
 ADawnCharacter::ADawnCharacter()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+    PrimaryActorTick.bCanEverTick = true;
+    GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
 
+    Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+    Camera->SetupAttachment(GetCapsuleComponent());
+    Camera->SetRelativeLocation(FVector(-10.f, 0.f, 60.f));
+    Camera->bUsePawnControlRotation = true;
+
+    Mesh1P = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh1P"));
+    Mesh1P->SetupAttachment(Camera);
+    Mesh1P->SetOnlyOwnerSee(true);
+    Mesh1P->bCastDynamicShadow = false;
+    Mesh1P->CastShadow = false;
+
+    WeaponComponent = CreateDefaultSubobject<UDawnWeaponComponent>(TEXT("WeaponComponent"));
+    WeaponComponent->SetupAttachment(Mesh1P, TEXT("GripPoint"));
 }
 
-// Called when the game starts or when spawned
 void ADawnCharacter::BeginPlay()
 {
-	Super::BeginPlay();
-	
+    Super::BeginPlay();
 }
-
-// Called every frame
-void ADawnCharacter::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
-// Called to bind functionality to input
-void ADawnCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-}
-

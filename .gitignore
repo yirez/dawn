@@ -1,7 +1,8 @@
 # Unreal Engine
 Saved/
 DerivedDataCache/
-Content/Alien*/
+*/AlienPlanet/
+Content/__ExternalActors__/
 Intermediate/
 .vscode/
 .vs/
