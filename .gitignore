@@ -1,14 +1,26 @@
-Binaries
-DerivedDataCache
-Intermediate
-Saved
-.vscode
-.vs
+# Unreal Engine
+Saved/
+DerivedDataCache/
+Content/Alien*/
+Intermediate/
+.vscode/
+.vs/
 *.VC.db
-*.opensdf
-*.opendb
 *.sdf
 *.sln
+*.opensdf
 *.suo
 *.xcodeproj
 *.xcworkspace
+*.vsconfig
+Binaries/
+
+# Build
+Build/
+*.log
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
