@@ -1,6 +1,8 @@
 # Unreal Engine
 Saved/
 DerivedDataCache/
+lfs/
+hooks/
 */AlienPlanet/
 Content/__ExternalActors__/
 Intermediate/
