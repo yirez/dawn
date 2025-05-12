@@ -1,29 +1,52 @@
 # Unreal Engine
 Saved/
-DerivedDataCache/
-lfs/
-hooks/
-*/AlienPlanet/
-Content/__ExternalActors__/
 Intermediate/
-.vscode/
-.vs/
-*.VC.db
-*.sdf
-*.sln
-*.opensdf
-*.suo
-*.xcodeproj
-*.xcworkspace
-*.vsconfig
+DerivedDataCache/
 Binaries/
 
-# Build
+# Content folders that should be ignored
+Content/__ExternalActors__/
+Content/__ExternalObjects__/
+
+# Visual Studio/IDE files
+.vs/
+.vscode/
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.opendb
+*.vsconfig
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+
+# Build files
 Build/
+
+# Log files
 *.log
 
-# Mac
+# OS-specific files
 .DS_Store
-
-# Windows
 Thumbs.db
+
+# Additional Unreal-specific files
+*.uproject.DotSettings.user
+.idea/
+
+# Large media files
+*.pdb
+*.uasset filter=lfs diff=lfs merge=lfs -text
+*.umap filter=lfs diff=lfs merge=lfs -text
+
+# Don't ignore these files if they're in a subdirectory
+!Build/Build.version
+!Build/*/
+!Binaries/Win64/
+!Binaries/Linux/
+
+# Marketplace assets
+Content/AlienPlanet/
