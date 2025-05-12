@@ -48,5 +48,9 @@ Thumbs.db
 !Binaries/Win64/
 !Binaries/Linux/
 
+hooks/
+lfs/
+
+
 # Marketplace assets
 Content/AlienPlanet/
